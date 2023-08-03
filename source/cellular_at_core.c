@@ -4,22 +4,23 @@
  *
  * SPDX-License-Identifier: MIT
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of
- * this software and associated documentation files (the "Software"), to deal in
- * the Software without restriction, including without limitation the rights to
- * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
- * the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
- * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
- * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  *
  * https://www.FreeRTOS.org
  * https://github.com/FreeRTOS
@@ -29,9 +30,9 @@
  * @brief FreeRTOS Cellular Library common AT command parsing functions.
  */
 
+#include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 #ifndef CELLULAR_DO_NOT_USE_CUSTOM_CONFIG
     /* Include custom config file before other headers. */
@@ -58,24 +59,29 @@ typedef enum CellularATStringValidationResult
 
 /*-----------------------------------------------------------*/
 
-static void validateString( const char * pString,
-                            CellularATStringValidationResult_t * pStringValidationResult );
+static void validateString(
+    const char * pString,
+    CellularATStringValidationResult_t * pStringValidationResult );
 static uint8_t _charToNibble( char c );
 
 /*-----------------------------------------------------------*/
 
-static void validateString( const char * pString,
-                            CellularATStringValidationResult_t * pStringValidationResult )
+static void validateString(
+    const char * pString,
+    CellularATStringValidationResult_t * pStringValidationResult )
 {
     const char * pNullCharacterLocation = NULL;
 
-    /* Validate the string length. If the string length is longer than expected, return
-     * error to stop further processing.
+    /* Validate the string length. If the string length is longer than expected,
+     * return error to stop further processing.
      *
-     * CELLULAR_AT_MAX_STRING_SIZE defines the valid string length excluding NULL terminating
-     * character. The longest valid string has '\0' at ( CELLULAR_AT_MAX_STRING_SIZE + 1U )
+     * CELLULAR_AT_MAX_STRING_SIZE defines the valid string length excluding
+     * NULL terminating character. The longest valid string has '\0' at (
+     * CELLULAR_AT_MAX_STRING_SIZE + 1U )
      */
-    pNullCharacterLocation = memchr( pString, ( int32_t ) '\0', ( CELLULAR_AT_MAX_STRING_SIZE + 1U ) );
+    pNullCharacterLocation = memchr( pString,
+                                     ( int32_t ) '\0',
+                                     ( CELLULAR_AT_MAX_STRING_SIZE + 1U ) );
 
     if( pNullCharacterLocation == pString )
     {
@@ -97,7 +103,8 @@ CellularATError_t Cellular_ATIsPrefixPresent( const char * pString,
                                               bool * pResult )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     char * ptrPrefixChar = NULL;
     char * ptrChar = NULL;
 
@@ -133,16 +140,24 @@ CellularATError_t Cellular_ATIsPrefixPresent( const char * pString,
         }
         else
         {
-            /* There should be only '+', '_', characters or digit before seperator. */
-            for( ptrChar = ( char * ) pString; ptrChar < ptrPrefixChar; ptrChar++ )
+            /* There should be only '+', '_', characters or digit before
+             * seperator. */
+            for( ptrChar = ( char * ) pString; ptrChar < ptrPrefixChar;
+                 ptrChar++ )
             {
                 /* It's caused by stanard api isalpha and isdigit. */
                 /* MISRA Ref 4.6.1  [Basic numerical type] */
-                /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46 */
+                /* More details at:
+                 * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46
+                 */
                 /* MISRA Ref 10.4.1 [Same essential type] */
-                /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-104 */
+                /* More details at:
+                 * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-104
+                 */
                 /* MISRA Ref 10.8.1 [Essential type casting] */
-                /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-108 */
+                /* More details at:
+                 * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-108
+                 */
                 /* coverity[misra_c_2012_directive_4_6_violation] */
                 /* coverity[misra_c_2012_rule_10_4_violation] */
                 /* coverity[misra_c_2012_rule_10_8_violation] */
@@ -165,7 +180,8 @@ CellularATError_t Cellular_ATStrStartWith( const char * pString,
                                            bool * pResult )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     const char * pTempString = pString;
     const char * pTempPrefix = pPrefix;
 
@@ -219,7 +235,8 @@ CellularATError_t Cellular_ATStrStartWith( const char * pString,
 CellularATError_t Cellular_ATRemovePrefix( char ** ppString )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
 
     if( ( ppString == NULL ) || ( *ppString == NULL ) )
     {
@@ -241,7 +258,8 @@ CellularATError_t Cellular_ATRemovePrefix( char ** ppString )
         /* The strchr() function returns a pointer to the first occurrence of
          * the character in the string or NULL if the character is not found.
          *
-         * In case of AT response, prefix is always followed by a colon (':'). */
+         * In case of AT response, prefix is always followed by a colon (':').
+         */
         *ppString = strchr( *ppString, ( int32_t ) ':' );
 
         if( *ppString == NULL )
@@ -263,7 +281,8 @@ CellularATError_t Cellular_ATRemovePrefix( char ** ppString )
 CellularATError_t Cellular_ATRemoveLeadingWhiteSpaces( char ** ppString )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
 
     if( ( ppString == NULL ) || ( *ppString == NULL ) )
     {
@@ -284,12 +303,17 @@ CellularATError_t Cellular_ATRemoveLeadingWhiteSpaces( char ** ppString )
     {
         /* isspace is a standard library function and we cannot control it. */
         /* MISRA Ref 4.6.1  [Basic numerical type] */
-        /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46 */
+        /* More details at:
+         * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46
+         */
         /* MISRA Ref 21.13.1  [Character representation] */
-        /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-2113 */
+        /* More details at:
+         * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-2113
+         */
         /* coverity[misra_c_2012_rule_21_13_violation] */
         /* coverity[misra_c_2012_directive_4_6_violation] */
-        while( ( **ppString != '\0' ) && ( isspace( ( ( int ) ( **ppString ) ) ) != 0U ) )
+        while( ( **ppString != '\0' ) &&
+               ( isspace( ( ( int ) ( **ppString ) ) ) != 0U ) )
         {
             ( *ppString )++;
         }
@@ -304,7 +328,8 @@ CellularATError_t Cellular_ATRemoveTrailingWhiteSpaces( char * pString )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
     char * p = NULL;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     uint32_t stringLen = 0;
 
     if( pString == NULL )
@@ -326,8 +351,8 @@ CellularATError_t Cellular_ATRemoveTrailingWhiteSpaces( char * pString )
     {
         stringLen = ( uint32_t ) strlen( pString );
 
-        /* This API intend to remove the trailing space, and this should be functional
-         * when the string length is greater than 2. */
+        /* This API intend to remove the trailing space, and this should be
+         * functional when the string length is greater than 2. */
         if( stringLen > 2U )
         {
             p = &pString[ stringLen ];
@@ -335,11 +360,16 @@ CellularATError_t Cellular_ATRemoveTrailingWhiteSpaces( char * pString )
             do
             {
                 --p;
-                /* isspace is a standard library function and we cannot control it. */
+                /* isspace is a standard library function and we cannot control
+                 * it. */
                 /* MISRA Ref 4.6.1  [Basic numerical type] */
-                /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46 */
+                /* More details at:
+                 * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46
+                 */
                 /* MISRA Ref 21.13.1  [Character representation] */
-                /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-2113 */
+                /* More details at:
+                 * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-2113
+                 */
                 /* coverity[misra_c_2012_directive_4_6_violation] */
                 /* coverity[misra_c_2012_rule_21_13_violation] */
             } while( ( p > pString ) && ( isspace( ( int ) ( *p ) ) != 0U ) );
@@ -356,7 +386,8 @@ CellularATError_t Cellular_ATRemoveTrailingWhiteSpaces( char * pString )
 CellularATError_t Cellular_ATRemoveAllWhiteSpaces( char * pString )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     char * p = NULL;
     uint16_t ind = 0;
     char * pTempString = pString;
@@ -382,11 +413,16 @@ CellularATError_t Cellular_ATRemoveAllWhiteSpaces( char * pString )
 
         while( ( *pTempString ) != '\0' )
         {
-            /* isspace is a standard library function and we cannot control it. */
+            /* isspace is a standard library function and we cannot control it.
+             */
             /* MISRA Ref 4.6.1  [Basic numerical type] */
-            /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46 */
+            /* More details at:
+             * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46
+             */
             /* MISRA Ref 21.13.1  [Character representation] */
-            /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-2113 */
+            /* More details at:
+             * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-2113
+             */
             /* coverity[misra_c_2012_rule_21_13_violation] */
             /* coverity[misra_c_2012_directive_4_6_violation] */
             if( isspace( ( ( int ) ( *pTempString ) ) ) == 0U )
@@ -409,7 +445,8 @@ CellularATError_t Cellular_ATRemoveAllWhiteSpaces( char * pString )
 CellularATError_t Cellular_ATRemoveOutermostDoubleQuote( char ** ppString )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     char * p = NULL;
     uint32_t stringLen = 0;
 
@@ -461,7 +498,8 @@ CellularATError_t Cellular_ATRemoveOutermostDoubleQuote( char ** ppString )
 CellularATError_t Cellular_ATRemoveAllDoubleQuote( char * pString )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     char * p = NULL;
     uint16_t ind = 0;
     char * pTempString = pString;
@@ -504,8 +542,7 @@ CellularATError_t Cellular_ATRemoveAllDoubleQuote( char * pString )
 
 /*-----------------------------------------------------------*/
 
-CellularATError_t Cellular_ATGetNextTok( char ** ppString,
-                                         char ** ppTokOutput )
+CellularATError_t Cellular_ATGetNextTok( char ** ppString, char ** ppTokOutput )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
     const char * pDelimiter = ",";
@@ -517,7 +554,9 @@ CellularATError_t Cellular_ATGetNextTok( char ** ppString,
 
     if( atStatus == CELLULAR_AT_SUCCESS )
     {
-        atStatus = Cellular_ATGetSpecificNextTok( ppString, pDelimiter, ppTokOutput );
+        atStatus = Cellular_ATGetSpecificNextTok( ppString,
+                                                  pDelimiter,
+                                                  ppTokOutput );
     }
 
     return atStatus;
@@ -530,7 +569,8 @@ CellularATError_t Cellular_ATGetSpecificNextTok( char ** ppString,
                                                  char ** ppTokOutput )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     uint16_t tokStrLen = 0, dataStrlen = 0;
     char * tok = NULL;
 
@@ -569,7 +609,8 @@ CellularATError_t Cellular_ATGetSpecificNextTok( char ** ppString,
     {
         tokStrLen = ( uint16_t ) strlen( tok );
 
-        if( ( tokStrLen < dataStrlen ) && ( ( *ppString )[ tokStrLen + 1U ] != '\0' ) )
+        if( ( tokStrLen < dataStrlen ) &&
+            ( ( *ppString )[ tokStrLen + 1U ] != '\0' ) )
         {
             *ppString = &tok[ strlen( tok ) + 1U ];
         }
@@ -596,13 +637,15 @@ static uint8_t _charToNibble( char c )
     }
     else if( ( c >= 'a' ) && ( c <= 'f' ) )
     {
-        ret = ( uint8_t ) ( ( uint32_t ) c - ( uint32_t ) 'a' + ( uint32_t ) 10 );
+        ret = ( uint8_t ) ( ( uint32_t ) c - ( uint32_t ) 'a' +
+                            ( uint32_t ) 10 );
     }
     else
     {
         if( ( c >= 'A' ) && ( c <= 'F' ) )
         {
-            ret = ( uint8_t ) ( ( uint32_t ) c - ( uint32_t ) 'A' + ( uint32_t ) 10 );
+            ret = ( uint8_t ) ( ( uint32_t ) c - ( uint32_t ) 'A' +
+                                ( uint32_t ) 10 );
         }
     }
 
@@ -616,7 +659,8 @@ CellularATError_t Cellular_ATHexStrToHex( const char * pString,
                                           uint16_t hexDataLen )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     uint16_t strHexLen = 0, i = 0;
     const char * p;
     uint8_t firstNibble = 0, secondNibble = 0;
@@ -674,11 +718,11 @@ CellularATError_t Cellular_ATHexStrToHex( const char * pString,
 
 /*-----------------------------------------------------------*/
 
-CellularATError_t Cellular_ATIsStrDigit( const char * pString,
-                                         bool * pResult )
+CellularATError_t Cellular_ATIsStrDigit( const char * pString, bool * pResult )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     const char * pTempString = pString;
 
     if( ( pResult == NULL ) || ( pString == NULL ) )
@@ -702,9 +746,12 @@ CellularATError_t Cellular_ATIsStrDigit( const char * pString,
 
         while( ( *pTempString != '\0' ) )
         {
-            /* isdigit is a standard library function and we cannot control it. */
+            /* isdigit is a standard library function and we cannot control it.
+             */
             /* MISRA Ref 4.6.1  [Basic numerical type] */
-            /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46 */
+            /* More details at:
+             * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-46
+             */
             /* coverity[misra_c_2012_directive_4_6_violation] */
             if( isdigit( ( ( int ) ( *pTempString ) ) ) == 0U )
             {
@@ -720,14 +767,16 @@ CellularATError_t Cellular_ATIsStrDigit( const char * pString,
 
 /*-----------------------------------------------------------*/
 
-CellularATError_t Cellular_ATcheckErrorCode( const char * pInputBuf,
-                                             const char * const * const ppKeyList,
-                                             size_t keyListLen,
-                                             bool * pResult )
+CellularATError_t Cellular_ATcheckErrorCode(
+    const char * pInputBuf,
+    const char * const * const ppKeyList,
+    size_t keyListLen,
+    bool * pResult )
 {
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
     uint8_t i = 0;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
     bool tmpResult;
 
     if( ( pInputBuf == NULL ) || ( ppKeyList == NULL ) || ( pResult == NULL ) )
@@ -751,7 +800,11 @@ CellularATError_t Cellular_ATcheckErrorCode( const char * pInputBuf,
 
         for( i = 0; i < keyListLen; i++ )
         {
-            if( ( Cellular_ATStrStartWith( pInputBuf, ppKeyList[ i ], &tmpResult ) == CELLULAR_AT_SUCCESS ) && tmpResult )
+            if( ( Cellular_ATStrStartWith( pInputBuf,
+                                           ppKeyList[ i ],
+                                           &tmpResult ) ==
+                  CELLULAR_AT_SUCCESS ) &&
+                tmpResult )
             {
                 *pResult = true;
                 break;
@@ -764,13 +817,13 @@ CellularATError_t Cellular_ATcheckErrorCode( const char * pInputBuf,
 
 /*-----------------------------------------------------------*/
 
-CellularATError_t Cellular_ATStrDup( char ** ppDst,
-                                     const char * pSrc )
+CellularATError_t Cellular_ATStrDup( char ** ppDst, const char * pSrc )
 {
     char * p = NULL;
     CellularATError_t atStatus = CELLULAR_AT_SUCCESS;
     const char * pTempSrc = pSrc;
-    CellularATStringValidationResult_t stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
+    CellularATStringValidationResult_t
+        stringValidationResult = CELLULAR_AT_STRING_UNKNOWN;
 
     if( ( ppDst == NULL ) || ( pTempSrc == NULL ) )
     {
@@ -789,7 +842,8 @@ CellularATError_t Cellular_ATStrDup( char ** ppDst,
 
     if( atStatus == CELLULAR_AT_SUCCESS )
     {
-        *ppDst = ( char * ) Platform_Malloc( sizeof( char ) * ( strlen( pTempSrc ) + 1U ) );
+        *ppDst = ( char * ) Platform_Malloc( sizeof( char ) *
+                                             ( strlen( pTempSrc ) + 1U ) );
 
         if( *ppDst != NULL )
         {
@@ -830,13 +884,16 @@ CellularATError_t Cellular_ATStrtoi( const char * pStr,
     else
     {
         /* MISRA Ref 22.8.1 [Initialize errno] */
-        /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-228 */
+        /* More details at:
+         * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-228
+         */
         /* coverity[misra_c_2012_rule_22_8_violation] */
         retStrtol = ( int32_t ) strtol( pStr, &pEndStr, base );
 
-        /* The return value zero may stand for the failure of strtol. So if the return value
-         * is zero, need to check the address of pEndStr, if it's greater than the pStr, that
-         * means there is an real parsed zero before pEndStr.
+        /* The return value zero may stand for the failure of strtol. So if the
+         * return value is zero, need to check the address of pEndStr, if it's
+         * greater than the pStr, that means there is an real parsed zero before
+         * pEndStr.
          */
         if( pEndStr == pStr )
         {
@@ -849,9 +906,13 @@ CellularATError_t Cellular_ATStrtoi( const char * pStr,
     }
 
     /* MISRA Ref 4.7.1 [Testing errno] */
-    /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-47 */
+    /* More details at:
+     * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#directive-47
+     */
     /* MISRA Ref 22.9.1 [Testing errno] */
-    /* More details at: https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-229 */
+    /* More details at:
+     * https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/blob/main/MISRA.md#rule-229
+     */
     /* coverity[need_errno_test] */
     /* coverity[return_without_test] */
     return atStatus;

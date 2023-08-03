@@ -4,22 +4,23 @@
  *
  * SPDX-License-Identifier: MIT
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of
- * this software and associated documentation files (the "Software"), to deal in
- * the Software without restriction, including without limitation the rights to
- * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
- * the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
- * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
- * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  *
  * https://www.FreeRTOS.org
  * https://github.com/FreeRTOS
@@ -34,7 +35,7 @@
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus
-    extern "C" {
+extern "C" {
 #endif
 /* *INDENT-ON* */
 
@@ -46,13 +47,13 @@
  * @ingroup cellular_datatypes_paramstructs
  * @brief Invalid signal value.
  */
-#define CELLULAR_INVALID_SIGNAL_VALUE        ( -32768 )
+#define CELLULAR_INVALID_SIGNAL_VALUE     ( -32768 )
 
 /**
  * @ingroup cellular_datatypes_paramstructs
  * @brief Invalid signal bar value.
  */
-#define CELLULAR_INVALID_SIGNAL_BAR_VALUE    ( 0xFFU )
+#define CELLULAR_INVALID_SIGNAL_BAR_VALUE ( 0xFFU )
 
 /**
  * @ingroup cellular_datatypes_handles
@@ -64,13 +65,13 @@ struct CellularContext;
  * @ingroup cellular_datatypes_handles
  * @brief Opaque Cellular context structure type.
  */
-typedef struct CellularContext         CellularContext_t;
+typedef struct CellularContext CellularContext_t;
 
 /**
  * @ingroup cellular_datatypes_handles
  * @brief Opaque Cellular handle.
  */
-typedef struct CellularContext         * CellularHandle_t;
+typedef struct CellularContext * CellularHandle_t;
 
 struct CellularSocketContext;
 
@@ -78,7 +79,7 @@ struct CellularSocketContext;
  * @ingroup cellular_datatypes_handles
  * @brief Opaque socket handle.
  */
-typedef struct CellularSocketContext   * CellularSocketHandle_t;
+typedef struct CellularSocketContext * CellularSocketHandle_t;
 
 /**
  * @ingroup cellular_datatypes_enums
@@ -86,26 +87,30 @@ typedef struct CellularSocketContext   * CellularSocketHandle_t;
  */
 typedef enum CellularError
 {
-    CELLULAR_SUCCESS = 0,            /**< The operation was successful. */
-    CELLULAR_INVALID_HANDLE,         /**< Invalid handle. */
-    CELLULAR_MODEM_NOT_READY,        /**< The modem is not ready yet. */
-    CELLULAR_LIBRARY_NOT_OPEN,       /**< The cellular library is not open yet. */
-    CELLULAR_LIBRARY_ALREADY_OPEN,   /**< The cellular library is already open. */
-    CELLULAR_BAD_PARAMETER,          /**< One or more of the input parameters is not valid. */
-    CELLULAR_NO_MEMORY,              /**< Memory allocation failure. */
-    CELLULAR_TIMEOUT,                /**< The operation timed out. */
-    CELLULAR_SOCKET_CLOSED,          /**< The supplied socket is already closed. */
-    CELLULAR_SOCKET_NOT_CONNECTED,   /**< The supplied socket is not connected. */
-    CELLULAR_INTERNAL_FAILURE,       /**< The Cellular library internal failure. */
-    CELLULAR_RESOURCE_CREATION_FAIL, /**< Resource creation for Cellular library failed. */
+    CELLULAR_SUCCESS = 0,          /**< The operation was successful. */
+    CELLULAR_INVALID_HANDLE,       /**< Invalid handle. */
+    CELLULAR_MODEM_NOT_READY,      /**< The modem is not ready yet. */
+    CELLULAR_LIBRARY_NOT_OPEN,     /**< The cellular library is not open yet. */
+    CELLULAR_LIBRARY_ALREADY_OPEN, /**< The cellular library is already open. */
+    CELLULAR_BAD_PARAMETER, /**< One or more of the input parameters is not
+                               valid. */
+    CELLULAR_NO_MEMORY,     /**< Memory allocation failure. */
+    CELLULAR_TIMEOUT,       /**< The operation timed out. */
+    CELLULAR_SOCKET_CLOSED, /**< The supplied socket is already closed. */
+    CELLULAR_SOCKET_NOT_CONNECTED, /**< The supplied socket is not connected. */
+    CELLULAR_INTERNAL_FAILURE, /**< The Cellular library internal failure. */
+    CELLULAR_RESOURCE_CREATION_FAIL, /**< Resource creation for Cellular library
+                                        failed. */
     CELLULAR_UNSUPPORTED,            /**< The operation is not supported. */
     CELLULAR_NOT_ALLOWED,            /**< The operation is not allowed. */
-    CELLULAR_UNKNOWN                 /**< Any other error other than the above mentioned ones. */
+    CELLULAR_UNKNOWN /**< Any other error other than the above mentioned ones.
+                      */
 } CellularError_t;
 
 /**
  * @ingroup cellular_datatypes_enums
- * @brief Enums representing Radio Access Technologies (RATs). Reference 3GPP TS 27.007 PLMN selection +COPS.
+ * @brief Enums representing Radio Access Technologies (RATs). Reference 3GPP
+ * TS 27.007 PLMN selection +COPS.
  */
 typedef enum CellularRat
 {
@@ -118,8 +123,9 @@ typedef enum CellularRat
     CELLULAR_RAT_LTE = 7,        /**< The LTE RATs network. */
     CELLULAR_RAT_CATM1 = 8,      /**< The CAT M1 RATs network. */
     CELLULAR_RAT_NBIOT = 9,      /**< The NBIOT RATs network. */
-    CELLULAR_RAT_MAX,            /**< The max supported number for RATs network. */
-    CELLULAR_RAT_INVALID = 0xFF  /**< Any other error other than the above mentioned ones. */
+    CELLULAR_RAT_MAX, /**< The max supported number for RATs network. */
+    CELLULAR_RAT_INVALID = 0xFF /**< Any other error other than the above
+                                   mentioned ones. */
 } CellularRat_t;
 
 /**
@@ -128,10 +134,14 @@ typedef enum CellularRat
  */
 typedef enum CellularSimCardState
 {
-    CELLULAR_SIM_CARD_REMOVED = 0, /**< The state stands for cellular sim card removed. */
-    CELLULAR_SIM_CARD_INSERTED,    /**< The state stands for cellular sim card inserted. */
-    CELLULAR_SIM_CARD_STATUS_MAX,  /**< The number of supported sim card status. */
-    CELLULAR_SIM_CARD_UNKNOWN      /**< The state stands for unknown cellular sim card. */
+    CELLULAR_SIM_CARD_REMOVED = 0, /**< The state stands for cellular sim card
+                                      removed. */
+    CELLULAR_SIM_CARD_INSERTED,    /**< The state stands for cellular sim card
+                                      inserted. */
+    CELLULAR_SIM_CARD_STATUS_MAX,  /**< The number of supported sim card status.
+                                    */
+    CELLULAR_SIM_CARD_UNKNOWN /**< The state stands for unknown cellular sim
+                                 card. */
 } CellularSimCardState_t;
 
 /**
@@ -140,55 +150,95 @@ typedef enum CellularSimCardState
  */
 typedef enum CellularSimCardLockState
 {
-    CELLULAR_SIM_CARD_READY = 0,     /**< The cellular sim card in a lock state of ready. */
-    CELLULAR_SIM_CARD_PIN,           /**< The cellular sim card in a lock state of pin(personal identification number). */
-    CELLULAR_SIM_CARD_PUK,           /**< The cellular sim card in a lock state of puk(personal unlocking key). */
-    CELLULAR_SIM_CARD_PIN2,          /**< The cellular sim card in a lock state of pin2. */
-    CELLULAR_SIM_CARD_PUK2,          /**< The cellular sim card in a lock state of puk2. */
-    CELLULAR_SIM_CARD_PH_NET_PIN,    /**< The cellular sim card in a lock state of ph-net pin. */
-    CELLULAR_SIM_CARD_PH_NET_PUK,    /**< The cellular sim card in a lock state of ph-net puk. */
-    CELLULAR_SIM_CARD_PH_NETSUB_PIN, /**< The cellular sim card in a lock state of ph-netsub pin. */
-    CELLULAR_SIM_CARD_PH_NETSUB_PUK, /**< The cellular sim card in a lock state of ph-netsub puk. */
-    CELLULAR_SIM_CARD_SP_PIN,        /**< The cellular sim card in a lock state of ph-sp pin. */
-    CELLULAR_SIM_CARD_SP_PUK,        /**< The cellular sim card in a lock state of ph-sp puk. */
-    CELLULAR_SIM_CARD_CORP_PIN,      /**< The cellular sim card in a lock state of ph-corp pin. */
-    CELLULAR_SIM_CARD_CORP_PUK,      /**< The cellular sim card in a lock state of ph-sp puk. */
-    CELLULAR_SIM_CARD_IMSI_PIN,      /**< The cellular sim card in a lock state of imsi pin. */
-    CELLULAR_SIM_CARD_IMSI_PUK,      /**< The cellular sim card in a lock state of imsi puk. */
-    CELLULAR_SIM_CARD_INVALID,       /**< The cellular sim card in a lock state of invalid. */
-    CELLULAR_SIM_CARD_LOCK_UNKNOWN   /**< The cellular sim card in a lock state of unknown. */
+    CELLULAR_SIM_CARD_READY = 0, /**< The cellular sim card in a lock state of
+                                    ready. */
+    CELLULAR_SIM_CARD_PIN,       /**< The cellular sim card in a lock state of
+                                    pin(personal identification number). */
+    CELLULAR_SIM_CARD_PUK,       /**< The cellular sim card in a lock state of
+                                    puk(personal unlocking key). */
+    CELLULAR_SIM_CARD_PIN2, /**< The cellular sim card in a lock state of pin2.
+                             */
+    CELLULAR_SIM_CARD_PUK2, /**< The cellular sim card in a lock state of puk2.
+                             */
+    CELLULAR_SIM_CARD_PH_NET_PIN, /**< The cellular sim card in a lock state of
+                                     ph-net pin. */
+    CELLULAR_SIM_CARD_PH_NET_PUK, /**< The cellular sim card in a lock state of
+                                     ph-net puk. */
+    CELLULAR_SIM_CARD_PH_NETSUB_PIN, /**< The cellular sim card in a lock state
+                                        of ph-netsub pin. */
+    CELLULAR_SIM_CARD_PH_NETSUB_PUK, /**< The cellular sim card in a lock state
+                                        of ph-netsub puk. */
+    CELLULAR_SIM_CARD_SP_PIN,      /**< The cellular sim card in a lock state of
+                                      ph-sp pin. */
+    CELLULAR_SIM_CARD_SP_PUK,      /**< The cellular sim card in a lock state of
+                                      ph-sp puk. */
+    CELLULAR_SIM_CARD_CORP_PIN,    /**< The cellular sim card in a lock state of
+                                      ph-corp pin. */
+    CELLULAR_SIM_CARD_CORP_PUK,    /**< The cellular sim card in a lock state of
+                                      ph-sp puk. */
+    CELLULAR_SIM_CARD_IMSI_PIN,    /**< The cellular sim card in a lock state of
+                                      imsi pin. */
+    CELLULAR_SIM_CARD_IMSI_PUK,    /**< The cellular sim card in a lock state of
+                                      imsi puk. */
+    CELLULAR_SIM_CARD_INVALID,     /**< The cellular sim card in a lock state of
+                                      invalid. */
+    CELLULAR_SIM_CARD_LOCK_UNKNOWN /**< The cellular sim card in a lock state of
+                                      unknown. */
 } CellularSimCardLockState_t;
 
 /**
  * @ingroup cellular_datatypes_enums
- * @brief Represents network registration mode. Reference 3GPP TS 27.007 PLMN selection +COPS.
+ * @brief Represents network registration mode. Reference 3GPP TS 27.007 PLMN
+ * selection +COPS.
  */
 typedef enum CellularNetworkRegistrationMode
 {
-    REGISTRATION_MODE_AUTO = 0,             /**< Auto network registration mode. */
-    REGISTRATION_MODE_MANUAL = 1,           /**< Manual network registration mode. */
-    REGISTRATION_MODE_DEREGISTER = 2,       /**< Deregister network registration mode. */
-    REGISTRATION_MODE_MANUAL_THEN_AUTO = 4, /**< Manual then auto network registration mode. */
-    REGISTRATION_MODE_MAX,                  /**< The number of supported registration mode. */
-    REGISTRATION_MODE_UNKNOWN               /**< Unknown network registration mode. */
+    REGISTRATION_MODE_AUTO = 0,       /**< Auto network registration mode. */
+    REGISTRATION_MODE_MANUAL = 1,     /**< Manual network registration mode. */
+    REGISTRATION_MODE_DEREGISTER = 2, /**< Deregister network registration mode.
+                                       */
+    REGISTRATION_MODE_MANUAL_THEN_AUTO = 4, /**< Manual then auto network
+                                               registration mode. */
+    REGISTRATION_MODE_MAX,    /**< The number of supported registration mode. */
+    REGISTRATION_MODE_UNKNOWN /**< Unknown network registration mode. */
 } CellularNetworkRegistrationMode_t;
 
 /**
  * @ingroup cellular_datatypes_enums
- * @brief Represents network registration status. Reference 3GPP TS 27.007 network registration status.
+ * @brief Represents network registration status. Reference 3GPP TS 27.007
+ * network registration status.
  */
 typedef enum CellularNetworkRegistrationStatus
 {
-    REGISTRATION_STATUS_NO_REGISTERED_SEARCHING = 0,      /**< No registered searching network registration status. */
-    REGISTRATION_STATUS_REGISTERED_HOME = 1,              /**< Registered home network registration status. */
-    REGISTRATION_STATUS_NOT_REGISTERED_SEARCHING = 2,     /**< Not registered searching network registration status. */
-    REGISTRATION_STATUS_REGISTRATION_DENIED = 3,          /**< Registration denied network registration status. */
-    REGISTRATION_STATUS_UNKNOWN = 4,                      /**< Unknown network registration status. */
-    REGISTRATION_STATUS_ROAMING_REGISTERED = 5,           /**< Roaming registered network registration status. */
-    REGISTRATION_STATUS_HOME_SMS_ONLY_REGISTERED = 6,     /**< Home SMS only registered network registration status. */
-    REGISTRATION_STATUS_SMS_ONLY_ROAMING_REGISTERED = 7,  /**< SMS only roaming registered network registration status. */
-    REGISTRATION_STATUS_ATTACHED_EMERG_SERVICES_ONLY = 8, /**< Attached emergency service only network registration status. */
-    REGISTRATION_STATUS_MAX                               /**< The max supported number for registration status. */
+    REGISTRATION_STATUS_NO_REGISTERED_SEARCHING = 0, /**< No registered
+                                                        searching network
+                                                        registration status. */
+    REGISTRATION_STATUS_REGISTERED_HOME = 1, /**< Registered home network
+                                                registration status. */
+    REGISTRATION_STATUS_NOT_REGISTERED_SEARCHING = 2, /**< Not registered
+                                                         searching network
+                                                         registration status. */
+    REGISTRATION_STATUS_REGISTRATION_DENIED = 3,      /**< Registration denied
+                                                         network registration status.
+                                                       */
+    REGISTRATION_STATUS_UNKNOWN = 4, /**< Unknown network registration status.
+                                      */
+    REGISTRATION_STATUS_ROAMING_REGISTERED = 5, /**< Roaming registered network
+                                                   registration status. */
+    REGISTRATION_STATUS_HOME_SMS_ONLY_REGISTERED = 6,     /**< Home SMS only
+                                                             registered network
+                                                             registration status. */
+    REGISTRATION_STATUS_SMS_ONLY_ROAMING_REGISTERED = 7,  /**< SMS only roaming
+                                                             registered network
+                                                             registration status.
+                                                           */
+    REGISTRATION_STATUS_ATTACHED_EMERG_SERVICES_ONLY = 8, /**< Attached
+                                                             emergency service
+                                                             only network
+                                                             registration
+                                                             status. */
+    REGISTRATION_STATUS_MAX /**< The max supported number for registration
+                               status. */
 } CellularNetworkRegistrationStatus_t;
 
 /**
@@ -200,8 +250,10 @@ typedef enum CellularOperatorNameFormat
     OPERATOR_NAME_FORMAT_LONG = 0,        /**< Long operator name format. */
     OPERATOR_NAME_FORMAT_SHORT = 1,       /**< Short operator name format. */
     OPERATOR_NAME_FORMAT_NUMERIC = 2,     /**< Numeric operator name format. */
-    OPERATOR_NAME_FORMAT_NOT_PRESENT = 9, /**< Not present operator name format. */
-    OPERATOR_NAME_FORMAT_MAX              /**< The max supported number for operator name format. */
+    OPERATOR_NAME_FORMAT_NOT_PRESENT = 9, /**< Not present operator name format.
+                                           */
+    OPERATOR_NAME_FORMAT_MAX /**< The max supported number for operator name
+                                format. */
 } CellularOperatorNameFormat_t;
 
 /**
@@ -210,14 +262,20 @@ typedef enum CellularOperatorNameFormat
  */
 typedef enum CellularUrcEvent
 {
-    CELLULAR_URC_EVENT_NETWORK_CS_REGISTRATION, /**< Network CS registration URC event. */
-    CELLULAR_URC_EVENT_NETWORK_PS_REGISTRATION, /**< Network PS registration URC event. */
-    CELLULAR_URC_EVENT_PDN_ACTIVATED,           /**< PDN activated registration URC event. */
-    CELLULAR_URC_EVENT_PDN_DEACTIVATED,         /**< PDN deactivated registration URC event. */
-    CELLULAR_URC_EVENT_SIGNAL_CHANGED,          /**< Signal changed registration URC event. */
-    CELLULAR_URC_SOCKET_OPENED,                 /**< Socket opened registration URC event. */
-    CELLULAR_URC_SOCKET_OPEN_FAILED,            /**< Socket open failed registration URC event. */
-    CELLULAR_URC_EVENT_OTHER                    /**< Any URC event other than above. */
+    CELLULAR_URC_EVENT_NETWORK_CS_REGISTRATION, /**< Network CS registration URC
+                                                   event. */
+    CELLULAR_URC_EVENT_NETWORK_PS_REGISTRATION, /**< Network PS registration URC
+                                                   event. */
+    CELLULAR_URC_EVENT_PDN_ACTIVATED, /**< PDN activated registration URC event.
+                                       */
+    CELLULAR_URC_EVENT_PDN_DEACTIVATED, /**< PDN deactivated registration URC
+                                           event. */
+    CELLULAR_URC_EVENT_SIGNAL_CHANGED,  /**< Signal changed registration URC
+                                           event. */
+    CELLULAR_URC_SOCKET_OPENED, /**< Socket opened registration URC event. */
+    CELLULAR_URC_SOCKET_OPEN_FAILED, /**< Socket open failed registration URC
+                                        event. */
+    CELLULAR_URC_EVENT_OTHER         /**< Any URC event other than above. */
 } CellularUrcEvent_t;
 
 /**
@@ -240,7 +298,8 @@ typedef enum CellularPdnContextType
     CELLULAR_PDN_CONTEXT_IPV4 = 1,   /**< IPV4 PDN CONTEXT. */
     CELLULAR_PDN_CONTEXT_IPV6 = 2,   /**< IPV6 PDN CONTEXT. */
     CELLULAR_PDN_CONTEXT_IPV4V6 = 3, /**< IPV4V6 PDN CONTEXT. */
-    CELLULAR_PDN_CONTEXT_TYPE_MAX    /**< The max number of supported PDN CONTEXT. */
+    CELLULAR_PDN_CONTEXT_TYPE_MAX /**< The max number of supported PDN CONTEXT.
+                                   */
 } CellularPdnContextType_t;
 
 /**
@@ -249,9 +308,10 @@ typedef enum CellularPdnContextType
  */
 typedef enum CellularPdnAuthType
 {
-    CELLULAR_PDN_AUTH_NONE = 0,   /**< No authentication. */
-    CELLULAR_PDN_AUTH_PAP,        /**< Password Authentication Protocol (PAP). */
-    CELLULAR_PDN_AUTH_CHAP,       /**< Challenge Handshake Authentication Protocol (CHAP). */
+    CELLULAR_PDN_AUTH_NONE = 0, /**< No authentication. */
+    CELLULAR_PDN_AUTH_PAP,      /**< Password Authentication Protocol (PAP). */
+    CELLULAR_PDN_AUTH_CHAP,     /**< Challenge Handshake Authentication Protocol
+                                   (CHAP). */
     CELLULAR_PDN_AUTH_PAP_OR_CHAP /**< PAP or CHAP. */
 } CellularPdnAuthType_t;
 
@@ -314,7 +374,8 @@ typedef enum CellularIPAddressType
 typedef enum CellularSocketOptionLevel
 {
     CELLULAR_SOCKET_OPTION_LEVEL_IP,       /**< IP layer options. */
-    CELLULAR_SOCKET_OPTION_LEVEL_TRANSPORT /**< Transport (TCP/UDP) layer options. */
+    CELLULAR_SOCKET_OPTION_LEVEL_TRANSPORT /**< Transport (TCP/UDP) layer
+                                              options. */
 } CellularSocketOptionLevel_t;
 
 /**
@@ -324,10 +385,13 @@ typedef enum CellularSocketOptionLevel
 typedef enum CellularSocketOption
 {
     CELLULAR_SOCKET_OPTION_MAX_IP_PACKET_SIZE, /**< Set Max IP packet size. */
-    CELLULAR_SOCKET_OPTION_SEND_TIMEOUT,       /**< Set send timeout (in milliseconds). */
-    CELLULAR_SOCKET_OPTION_RECV_TIMEOUT,       /**< Set receive timeout (in milliseconds). */
-    CELLULAR_SOCKET_OPTION_PDN_CONTEXT_ID,     /**< Set PDN Context ID to use for the socket. */
-    CELLULAR_SOCKET_OPTION_SET_LOCAL_PORT      /**< Set local port. */
+    CELLULAR_SOCKET_OPTION_SEND_TIMEOUT,       /**< Set send timeout (in
+                                                  milliseconds). */
+    CELLULAR_SOCKET_OPTION_RECV_TIMEOUT,       /**< Set receive timeout (in
+                                                  milliseconds). */
+    CELLULAR_SOCKET_OPTION_PDN_CONTEXT_ID, /**< Set PDN Context ID to use for
+                                              the socket. */
+    CELLULAR_SOCKET_OPTION_SET_LOCAL_PORT  /**< Set local port. */
 } CellularSocketOption_t;
 
 /**
@@ -336,12 +400,13 @@ typedef enum CellularSocketOption
  */
 typedef enum CellularPktStatus
 {
-    CELLULAR_PKT_STATUS_OK = 0,          /* The operation was successful. */
-    CELLULAR_PKT_STATUS_TIMED_OUT,       /* The operation timed out. */
-    CELLULAR_PKT_STATUS_FAILURE,         /* There was some internal failure. */
-    CELLULAR_PKT_STATUS_BAD_REQUEST,     /* Request was not valid. */
-    CELLULAR_PKT_STATUS_BAD_RESPONSE,    /* The response received was not valid. */
-    CELLULAR_PKT_STATUS_SIZE_MISMATCH,   /* There is a size mismatch between the params. */
+    CELLULAR_PKT_STATUS_OK = 0,       /* The operation was successful. */
+    CELLULAR_PKT_STATUS_TIMED_OUT,    /* The operation timed out. */
+    CELLULAR_PKT_STATUS_FAILURE,      /* There was some internal failure. */
+    CELLULAR_PKT_STATUS_BAD_REQUEST,  /* Request was not valid. */
+    CELLULAR_PKT_STATUS_BAD_RESPONSE, /* The response received was not valid. */
+    CELLULAR_PKT_STATUS_SIZE_MISMATCH,   /* There is a size mismatch between the
+                                            params. */
     CELLULAR_PKT_STATUS_BAD_PARAM,       /* One or more params is not valid. */
     CELLULAR_PKT_STATUS_SEND_ERROR,      /* Modem returned a send error. */
     CELLULAR_PKT_STATUS_INVALID_HANDLE,  /* Invalid context. */
@@ -358,15 +423,21 @@ typedef enum CellularPktStatus
  */
 typedef enum CellularATCommandType
 {
-    CELLULAR_AT_NO_RESULT,                  /**<  no response expected, only OK, ERROR etc. */
-    CELLULAR_AT_WO_PREFIX,                  /**<  string response without a prefix. */
-    CELLULAR_AT_WITH_PREFIX,                /**<  string response with a prefix. */
-    CELLULAR_AT_MULTI_WITH_PREFIX,          /**<  multiple line response all start with a prefix. */
-    CELLULAR_AT_MULTI_WO_PREFIX,            /**<  multiple line response with or without a prefix. */
-    CELLULAR_AT_MULTI_DATA_WO_PREFIX,       /**<  multiple line data response with or without a prefix. */
-    CELLULAR_AT_WO_PREFIX_NO_RESULT_CODE,   /**<  string response without a prefix and no result code is expected. */
-    CELLULAR_AT_WITH_PREFIX_NO_RESULT_CODE, /**<  string response WITH a prefix and no result code is expected. */
-    CELLULAR_AT_NO_COMMAND                  /**<  no command is waiting response. */
+    CELLULAR_AT_NO_RESULT,   /**<  no response expected, only OK, ERROR etc. */
+    CELLULAR_AT_WO_PREFIX,   /**<  string response without a prefix. */
+    CELLULAR_AT_WITH_PREFIX, /**<  string response with a prefix. */
+    CELLULAR_AT_MULTI_WITH_PREFIX, /**<  multiple line response all start with a
+                                      prefix. */
+    CELLULAR_AT_MULTI_WO_PREFIX, /**<  multiple line response with or without a
+                                    prefix. */
+    CELLULAR_AT_MULTI_DATA_WO_PREFIX, /**<  multiple line data response with or
+                                         without a prefix. */
+    CELLULAR_AT_WO_PREFIX_NO_RESULT_CODE, /**<  string response without a prefix
+                                             and no result code is expected. */
+    CELLULAR_AT_WITH_PREFIX_NO_RESULT_CODE, /**<  string response WITH a prefix
+                                               and no result code is expected.
+                                             */
+    CELLULAR_AT_NO_COMMAND /**<  no command is waiting response. */
 } CellularATCommandType_t;
 
 /**
@@ -375,8 +446,9 @@ typedef enum CellularATCommandType
  */
 typedef struct CellularSimCardStatus
 {
-    CellularSimCardState_t simCardState;         /**<  Cellular sim card state. */
-    CellularSimCardLockState_t simCardLockState; /**<  Cellular sim card lock state. */
+    CellularSimCardState_t simCardState; /**<  Cellular sim card state. */
+    CellularSimCardLockState_t simCardLockState; /**<  Cellular sim card lock
+                                                    state. */
 } CellularSimCardStatus_t;
 
 /**
@@ -395,9 +467,13 @@ typedef struct CellularPlmnInfo
  */
 typedef struct CellularSimCardInfo
 {
-    char iccid[ CELLULAR_ICCID_MAX_SIZE + 1 ]; /**< Integrated Circuit Card Identifier aka SIM Card Number. */
-    char imsi[ CELLULAR_IMSI_MAX_SIZE + 1 ];   /**< International Mobile Subscriber Identity. */
-    CellularPlmnInfo_t plmn;                   /**< Public Land Mobile Network (PLMN) information. */
+    char iccid[ CELLULAR_ICCID_MAX_SIZE + 1 ]; /**< Integrated Circuit Card
+                                                  Identifier aka SIM Card
+                                                  Number. */
+    char imsi[ CELLULAR_IMSI_MAX_SIZE + 1 ];   /**< International Mobile
+                                                  Subscriber Identity. */
+    CellularPlmnInfo_t plmn; /**< Public Land Mobile Network (PLMN) information.
+                              */
 } CellularSimCardInfo_t;
 
 /**
@@ -406,12 +482,19 @@ typedef struct CellularSimCardInfo
  */
 typedef struct CellularModemInfo
 {
-    char hardwareVersion[ CELLULAR_HW_VERSION_MAX_SIZE + 1 ];   /**< Hardware version number. */
-    char firmwareVersion[ CELLULAR_FW_VERSION_MAX_SIZE + 1 ];   /**< Firmware version number. */
-    char serialNumber[ CELLULAR_SERIAL_NUM_MAX_SIZE + 1 ];      /**< Module serial number. */
-    char imei[ CELLULAR_IMEI_MAX_SIZE + 1 ];                    /**< International Mobile Equipment Identity (IMEI). */
-    char manufactureId[ CELLULAR_MANUFACTURE_ID_MAX_SIZE + 1 ]; /**< Manufacture Identity. */
-    char modelId[ CELLULAR_MODEL_ID_MAX_SIZE + 1 ];             /**< Model Identity. */
+    char hardwareVersion[ CELLULAR_HW_VERSION_MAX_SIZE + 1 ]; /**< Hardware
+                                                                 version number.
+                                                               */
+    char firmwareVersion[ CELLULAR_FW_VERSION_MAX_SIZE + 1 ]; /**< Firmware
+                                                                 version number.
+                                                               */
+    char serialNumber[ CELLULAR_SERIAL_NUM_MAX_SIZE + 1 ];    /**< Module serial
+                                                                 number. */
+    char imei[ CELLULAR_IMEI_MAX_SIZE + 1 ]; /**< International Mobile Equipment
+                                                Identity (IMEI). */
+    char manufactureId[ CELLULAR_MANUFACTURE_ID_MAX_SIZE + 1 ]; /**< Manufacture
+                                                                   Identity. */
+    char modelId[ CELLULAR_MODEL_ID_MAX_SIZE + 1 ]; /**< Model Identity. */
 } CellularModemInfo_t;
 
 /**
@@ -426,10 +509,12 @@ typedef struct CellularTime
     uint8_t minute;   /**< Minute of the hour 0..59. */
     uint8_t second;   /**< Second of the minute 0..59. */
     uint16_t year;    /**< Year (like 2019). */
-    int32_t timeZone; /**< Timezone represented in 15 minute increments (UTC+1 will be 4 because 1 hour = 60 minutes = 4 * 15 minutes). */
-    uint8_t dst;      /**< Daylight savings ( 0 = No adjustment for daylight savings
-                      *                      1 = +1 hour for daylight savings
-                      *                      2 = +2 hours for daylight savings ). */
+    int32_t timeZone; /**< Timezone represented in 15 minute increments (UTC+1
+                         will be 4 because 1 hour = 60 minutes = 4 * 15
+                         minutes). */
+    uint8_t dst; /**< Daylight savings ( 0 = No adjustment for daylight savings
+                  *                      1 = +1 hour for daylight savings
+                  *                      2 = +2 hours for daylight savings ). */
 } CellularTime_t;
 
 /**
@@ -443,7 +528,8 @@ typedef struct CellularSignalInfo
     int16_t rsrq; /**< LTE Reference Signal Received Quality (RSRQ) in dB. */
     int16_t sinr; /**< LTE Signal to Interference-Noise Ratio in dB. */
     int16_t ber;  /**< Bit Error Rate (BER) in 0.01%. */
-    uint8_t bars; /**< A number between 0 to 5 (both inclusive) indicating signal strength. */
+    uint8_t bars; /**< A number between 0 to 5 (both inclusive) indicating
+                     signal strength. */
 } CellularSignalInfo_t;
 
 /**
@@ -452,17 +538,39 @@ typedef struct CellularSignalInfo
  */
 typedef struct CellularServiceStatus
 {
-    CellularRat_t rat;                                         /**< Radio Access Technology (RAT). */
-    CellularNetworkRegistrationMode_t networkRegistrationMode; /**< Network registration mode (auto/manual etc.) currently selected. */
-    CellularNetworkRegistrationStatus_t csRegistrationStatus;  /**< CS (Circuit Switched) registration status (registered/searching/roaming etc.). */
-    CellularNetworkRegistrationStatus_t psRegistrationStatus;  /**< PS (Packet Switched) registration status (registered/searching/roaming etc.). */
-    CellularPlmnInfo_t plmnInfo;                               /**< Registered MCC and MNC information. */
-    CellularOperatorNameFormat_t operatorNameFormat;           /**< Format of registered network operator name. */
-    char operatorName[ CELLULAR_NETWORK_NAME_MAX_SIZE + 1 ];   /**< Registered network operator name. */
-    uint8_t csRejectionType;                                   /**< CS Reject Type. 0 - 3GPP specific Reject Cause. 1 - Manufacture specific. */
-    uint8_t csRejectionCause;                                  /**< Reason why the CS (Circuit Switched) registration attempt was rejected. */
-    uint8_t psRejectionType;                                   /**< PS Reject Type. 0 - 3GPP specific Reject Cause. 1 - Manufacture specific. */
-    uint8_t psRejectionCause;                                  /**< Reason why the PS (Packet Switched) registration attempt was rejected. */
+    CellularRat_t rat; /**< Radio Access Technology (RAT). */
+    CellularNetworkRegistrationMode_t
+        networkRegistrationMode; /**< Network registration mode (auto/manual
+                                    etc.) currently selected. */
+    CellularNetworkRegistrationStatus_t
+        csRegistrationStatus; /**< CS (Circuit
+                                 Switched)
+                                 registration
+                                 status
+                                 (registered/searching/roaming
+                                 etc.). */
+    CellularNetworkRegistrationStatus_t
+        psRegistrationStatus;    /**< PS (Packet
+                                    Switched)
+                                    registration
+                                    status
+                                    (registered/searching/roaming
+                                    etc.). */
+    CellularPlmnInfo_t plmnInfo; /**< Registered MCC and MNC information. */
+    CellularOperatorNameFormat_t operatorNameFormat; /**< Format of registered
+                                                        network operator name.
+                                                      */
+    char operatorName[ CELLULAR_NETWORK_NAME_MAX_SIZE + 1 ]; /**< Registered
+                                                                network operator
+                                                                name. */
+    uint8_t csRejectionType;  /**< CS Reject Type. 0 - 3GPP specific Reject
+                                 Cause. 1 - Manufacture specific. */
+    uint8_t csRejectionCause; /**< Reason why the CS (Circuit Switched)
+                                 registration attempt was rejected. */
+    uint8_t psRejectionType;  /**< PS Reject Type. 0 - 3GPP specific Reject
+                                 Cause. 1 - Manufacture specific. */
+    uint8_t psRejectionCause; /**< Reason why the PS (Packet Switched)
+                                 registration attempt was rejected. */
 } CellularServiceStatus_t;
 
 /**
@@ -471,7 +579,10 @@ typedef struct CellularServiceStatus
  */
 typedef struct CellularATCommandLine
 {
-    struct CellularATCommandLine * pNext; /**< The CellularATCommandLine structure pointer points to the next element of the liniked list. */
+    struct CellularATCommandLine * pNext; /**< The CellularATCommandLine
+                                             structure pointer points to the
+                                             next element of the liniked list.
+                                           */
     char * pLine;                         /**< The content of the at command. */
 } CellularATCommandLine_t;
 
@@ -481,7 +592,7 @@ typedef struct CellularATCommandLine
  */
 typedef struct CellularATCommandResponse
 {
-    bool status;                    /**< true: modem returns Success, false: Error. */
+    bool status; /**< true: modem returns Success, false: Error. */
     CellularATCommandLine_t * pItm; /**< Any intermediate responses. */
 } CellularATCommandResponse_t;
 
@@ -512,7 +623,8 @@ typedef struct CellularPsmSettings
      * e.g. "00001010" equals to 100 minutes.
      * first uint8_t is used for PSM set, whole uint32_t is used for PSM get.
      */
-    uint32_t periodicTauValue; /**< TAU (T3412) value encoded as per spec (as shown above). */
+    uint32_t periodicTauValue; /**< TAU (T3412) value encoded as per spec (as
+                                  shown above). */
 
     /*
      * Bits 5 to 1 represent the binary coded timer value
@@ -529,7 +641,8 @@ typedef struct CellularPsmSettings
      * e.g. "00001010" equals to 100 minutes.
      * first uint8_t is used for PSM set, whole uint32_t is used for PSM get.
      */
-    uint32_t periodicRauValue; /**< RAU (T3312) value encoded as per Spec (as shown above). */
+    uint32_t periodicRauValue; /**< RAU (T3312) value encoded as per Spec (as
+                                  shown above). */
 
     /*
      * Bits 5 to 1 represent the binary coded timer value
@@ -546,7 +659,8 @@ typedef struct CellularPsmSettings
      * e.g. "00001010" equals to 100 minutes.
      * first uint8_t is used for PSM set, whole uint32_t is used for PSM get.
      */
-    uint32_t gprsReadyTimer; /**< GPRS Ready timer (T3314) value encoded as per Spec. */
+    uint32_t gprsReadyTimer; /**< GPRS Ready timer (T3314) value encoded as per
+                                Spec. */
 
     /*
      * Bits 5 to 1 represent the binary coded timer value.
@@ -561,7 +675,8 @@ typedef struct CellularPsmSettings
      * "00001111" equals to 30 seconds.
      * first uint8_t is used for PSM set, whole uint32_t is used for PSM get.
      */
-    uint32_t activeTimeValue; /**< Active Time (T3324) value encoded as per spec (as shown above). */
+    uint32_t activeTimeValue; /**< Active Time (T3324) value encoded as per spec
+                                 (as shown above). */
 } CellularPsmSettings_t;
 
 /**
@@ -608,8 +723,11 @@ typedef struct CellularEidrxSettings
      * 1 1 1 0   5242.88 seconds
      * 1 1 1 1   10485.76 seconds
      */
-    uint8_t requestedEdrxVaue;  /**< Requested eDRX value encoded as per spec (as shown above). */
-    uint8_t nwProvidedEdrxVaue; /**< Network provided eDRX value encoded as per spec (as shown above). Only applicable in URC. */
+    uint8_t requestedEdrxVaue; /**< Requested eDRX value encoded as per spec (as
+                                  shown above). */
+    uint8_t nwProvidedEdrxVaue; /**< Network provided eDRX value encoded as per
+                                   spec (as shown above). Only applicable in
+                                   URC. */
 
     /*
      * LTE Cat M1 mode
@@ -652,7 +770,8 @@ typedef struct CellularEidrxSettings
      * 1 1 1 0 38.4 seconds
      * 1 1 1 1 40.96 seconds
      */
-    uint8_t pagingTimeWindow; /**< Paging time window encoded as per spec (as shown above). Only applicable in URC. */
+    uint8_t pagingTimeWindow; /**< Paging time window encoded as per spec (as
+                                 shown above). Only applicable in URC. */
 } CellularEidrxSettings_t;
 
 /**
@@ -661,8 +780,13 @@ typedef struct CellularEidrxSettings
  */
 typedef struct CellularEidrxSettingsList
 {
-    CellularEidrxSettings_t eidrxList[ CELLULAR_EDRX_LIST_MAX_SIZE ]; /**<  Cellular e-I-DRX settings list. */
-    uint8_t count;                                                    /**<  Cellular e-I-DRX settings list number. */
+    CellularEidrxSettings_t eidrxList[ CELLULAR_EDRX_LIST_MAX_SIZE ]; /**<
+                                                                         Cellular
+                                                                         e-I-DRX
+                                                                         settings
+                                                                         list.
+                                                                       */
+    uint8_t count; /**<  Cellular e-I-DRX settings list number. */
 } CellularEidrxSettingsList_t;
 
 /**
@@ -671,8 +795,10 @@ typedef struct CellularEidrxSettingsList
  */
 typedef struct CellularIPAddress
 {
-    CellularIPAddressType_t ipAddressType;              /**< Type of IP address (IPv4/IPv6). */
-    char ipAddress[ CELLULAR_IP_ADDRESS_MAX_SIZE + 1 ]; /**< IP Address. NULL terminated. */
+    CellularIPAddressType_t ipAddressType; /**< Type of IP address (IPv4/IPv6).
+                                            */
+    char ipAddress[ CELLULAR_IP_ADDRESS_MAX_SIZE + 1 ]; /**< IP Address. NULL
+                                                           terminated. */
 } CellularIPAddress_t;
 
 /**
@@ -681,8 +807,8 @@ typedef struct CellularIPAddress
  */
 typedef struct CellularPdnConfig
 {
-    CellularPdnContextType_t pdnContextType;                   /**< PDN Context type. */
-    CellularPdnAuthType_t pdnAuthType;                         /**< PDN Authentication type. */
+    CellularPdnContextType_t pdnContextType; /**< PDN Context type. */
+    CellularPdnAuthType_t pdnAuthType;       /**< PDN Authentication type. */
     const char apnName[ CELLULAR_APN_MAX_SIZE + 1 ];           /**< APN name. */
     const char username[ CELLULAR_PDN_USERNAME_MAX_SIZE + 1 ]; /**< Username. */
     const char password[ CELLULAR_PDN_PASSWORD_MAX_SIZE + 1 ]; /**< Password. */
@@ -694,10 +820,11 @@ typedef struct CellularPdnConfig
  */
 typedef struct CellularPdnStatus
 {
-    uint8_t contextId;                       /**< 1-16 are valid values. */
-    uint8_t state;                           /**< 0 = Deactivated, 1 = Activated. */
+    uint8_t contextId; /**< 1-16 are valid values. */
+    uint8_t state;     /**< 0 = Deactivated, 1 = Activated. */
     CellularPdnContextType_t pdnContextType; /**< PDN Context type. */
-    CellularIPAddress_t ipAddress;           /**< Local IP address after the context is activated. */
+    CellularIPAddress_t ipAddress; /**< Local IP address after the context is
+                                      activated. */
 } CellularPdnStatus_t;
 
 /**
@@ -715,18 +842,22 @@ typedef struct CellularSocketAddress
  * @brief Callback used to inform about the response of an AT command sent
  * using Cellular_ATCommandRaw API.
  *
- * @param[in] cellularHandle The opaque cellular context pointer created by Cellular_Init.
+ * @param[in] cellularHandle The opaque cellular context pointer created by
+ * Cellular_Init.
  * @param[in] pAtResp The response received for the AT command.
- * @param[in] pData is pATCommandPayload pointer in Cellular_ATCommandRaw parameters.
- * @param[in] dataLen is the string length of pATCommandPayloadin in Cellular_ATCommandRaw parameters.
+ * @param[in] pData is pATCommandPayload pointer in Cellular_ATCommandRaw
+ * parameters.
+ * @param[in] dataLen is the string length of pATCommandPayloadin in
+ * Cellular_ATCommandRaw parameters.
  *
- * @return CELLULAR_PKT_STATUS_OK if the operation is successful, otherwise an error
- * code indicating the cause of the error.
+ * @return CELLULAR_PKT_STATUS_OK if the operation is successful, otherwise an
+ * error code indicating the cause of the error.
  */
-typedef CellularPktStatus_t ( * CellularATCommandResponseReceivedCallback_t ) ( CellularHandle_t cellularHandle,
-                                                                                const CellularATCommandResponse_t * pAtResp,
-                                                                                void * pData,
-                                                                                uint16_t dataLen );
+typedef CellularPktStatus_t ( *CellularATCommandResponseReceivedCallback_t )(
+    CellularHandle_t cellularHandle,
+    const CellularATCommandResponse_t * pAtResp,
+    void * pData,
+    uint16_t dataLen );
 
 /**
  * @ingroup cellular_datatypes_functionpointers
@@ -737,9 +868,10 @@ typedef CellularPktStatus_t ( * CellularATCommandResponseReceivedCallback_t ) ( 
  * @param[in] pCallbackContext pCallbackContext parameter in
  * Cellular_RegisterUrcNetworkRegistrationEventCallback function.
  */
-typedef void ( * CellularUrcNetworkRegistrationCallback_t )( CellularUrcEvent_t urcEvent,
-                                                             const CellularServiceStatus_t * pServiceStatus,
-                                                             void * pCallbackContext );
+typedef void ( *CellularUrcNetworkRegistrationCallback_t )(
+    CellularUrcEvent_t urcEvent,
+    const CellularServiceStatus_t * pServiceStatus,
+    void * pCallbackContext );
 
 /**
  * @ingroup cellular_datatypes_functionpointers
@@ -750,9 +882,9 @@ typedef void ( * CellularUrcNetworkRegistrationCallback_t )( CellularUrcEvent_t 
  * @param[in] pCallbackContext pCallbackContext parameter in
  * Cellular_RegisterUrcPdnEventCallback function.
  */
-typedef void ( * CellularUrcPdnEventCallback_t )( CellularUrcEvent_t urcEvent,
-                                                  uint8_t contextId,
-                                                  void * pCallbackContext );
+typedef void ( *CellularUrcPdnEventCallback_t )( CellularUrcEvent_t urcEvent,
+                                                 uint8_t contextId,
+                                                 void * pCallbackContext );
 
 /**
  * @ingroup cellular_datatypes_functionpointers
@@ -763,9 +895,10 @@ typedef void ( * CellularUrcPdnEventCallback_t )( CellularUrcEvent_t urcEvent,
  * @param[in] pCallbackContext pCallbackContext parameter in
  * Cellular_RegisterUrcSignalStrengthChangedCallback function.
  */
-typedef void ( * CellularUrcSignalStrengthChangedCallback_t )( CellularUrcEvent_t urcEvent,
-                                                               const CellularSignalInfo_t * pSignalInfo,
-                                                               void * pCallbackContext );
+typedef void ( *CellularUrcSignalStrengthChangedCallback_t )(
+    CellularUrcEvent_t urcEvent,
+    const CellularSignalInfo_t * pSignalInfo,
+    void * pCallbackContext );
 
 /**
  * @ingroup cellular_datatypes_functionpointers
@@ -775,8 +908,8 @@ typedef void ( * CellularUrcSignalStrengthChangedCallback_t )( CellularUrcEvent_
  * @param[in] pCallbackContext pCallbackContext parameter in
  * Cellular_RegisterUrcGenericCallback function.
  */
-typedef void ( * CellularUrcGenericCallback_t )( const char * pRawData,
-                                                 void * pCallbackContext );
+typedef void ( *CellularUrcGenericCallback_t )( const char * pRawData,
+                                                void * pCallbackContext );
 
 /**
  * @ingroup cellular_datatypes_functionpointers
@@ -786,8 +919,8 @@ typedef void ( * CellularUrcGenericCallback_t )( const char * pRawData,
  * @param[in] pCallbackContext pCallbackContext parameter in
  * Cellular_RegisterModemEventCallback function.
  */
-typedef void ( * CellularModemEventCallback_t )( CellularModemEvent_t modemEvent,
-                                                 void * pCallbackContext );
+typedef void ( *CellularModemEventCallback_t )( CellularModemEvent_t modemEvent,
+                                                void * pCallbackContext );
 
 /**
  * @ingroup cellular_datatypes_functionpointers
@@ -798,9 +931,10 @@ typedef void ( * CellularModemEventCallback_t )( CellularModemEvent_t modemEvent
  * @param[in] pCallbackContext pCallbackContext parameter in
  * Cellular_SocketRegisterSocketOpenCallback function.
  */
-typedef void ( * CellularSocketOpenCallback_t )( CellularUrcEvent_t urcEvent,
-                                                 CellularSocketHandle_t socketHandle,
-                                                 void * pCallbackContext );
+typedef void ( *CellularSocketOpenCallback_t )(
+    CellularUrcEvent_t urcEvent,
+    CellularSocketHandle_t socketHandle,
+    void * pCallbackContext );
 
 /**
  * @ingroup cellular_datatypes_functionpointers
@@ -810,8 +944,9 @@ typedef void ( * CellularSocketOpenCallback_t )( CellularUrcEvent_t urcEvent,
  * @param[in] pCallbackContext pCallbackContext parameter in
  * Cellular_SocketRegisterDataReadyCallback function.
  */
-typedef void ( * CellularSocketDataReadyCallback_t )( CellularSocketHandle_t socketHandle,
-                                                      void * pCallbackContext );
+typedef void ( *CellularSocketDataReadyCallback_t )(
+    CellularSocketHandle_t socketHandle,
+    void * pCallbackContext );
 
 /**
  * @ingroup cellular_datatypes_functionpointers
@@ -823,12 +958,13 @@ typedef void ( * CellularSocketDataReadyCallback_t )( CellularSocketHandle_t soc
  * @param[in] pCallbackContext pCallbackContext parameter in
  * Cellular_SocketRegisterClosedCallback function.
  */
-typedef void ( * CellularSocketClosedCallback_t )( CellularSocketHandle_t socketHandle,
-                                                   void * pCallbackContext );
+typedef void ( *CellularSocketClosedCallback_t )(
+    CellularSocketHandle_t socketHandle,
+    void * pCallbackContext );
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus
-    }
+}
 #endif
 /* *INDENT-ON* */
 

@@ -4,22 +4,23 @@
  *
  * SPDX-License-Identifier: MIT
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of
- * this software and associated documentation files (the "Software"), to deal in
- * the Software without restriction, including without limitation the rights to
- * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
- * the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
- * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
- * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  *
  * https://www.FreeRTOS.org
  * https://github.com/FreeRTOS
@@ -34,7 +35,7 @@
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus
-    extern "C" {
+extern "C" {
 #endif
 /* *INDENT-ON* */
 
@@ -57,7 +58,7 @@
 /**
  * @brief The array size of an array.
  */
-#define ARRY_SIZE( x )    ( sizeof( x ) / sizeof( x[ 0 ] ) )
+#define ARRY_SIZE( x ) ( sizeof( x ) / sizeof( x[ 0 ] ) )
 
 /*-----------------------------------------------------------*/
 
@@ -67,12 +68,14 @@
 typedef enum CellularATError
 {
     CELLULAR_AT_SUCCESS = 0,   /**< The operation was successful. */
-    CELLULAR_AT_BAD_PARAMETER, /**< One or more of the input parameters is not valid. */
+    CELLULAR_AT_BAD_PARAMETER, /**< One or more of the input parameters is not
+                                  valid. */
     CELLULAR_AT_NO_MEMORY,     /**< Memory allocation failure. */
     CELLULAR_AT_UNSUPPORTED,   /**< The operation is not supported. */
     CELLULAR_AT_MODEM_ERROR,   /**< Error in modem response. */
     CELLULAR_AT_ERROR,         /**< Generic Error or boolean false. */
-    CELLULAR_AT_UNKNOWN        /**< Any other error other than the above mentioned ones. */
+    CELLULAR_AT_UNKNOWN /**< Any other error other than the above mentioned
+                           ones. */
 } CellularATError_t;
 
 /*-----------------------------------------------------------*/
@@ -285,9 +288,9 @@ CellularATError_t Cellular_ATGetSpecificNextTok( char ** ppString,
  * @brief Convert HEX string to HEX.
  *
  * This function requires the provided string to be of even length and returns
- * CELLULAR_AT_BAD_PARAMETER if it is not. It also requires the output buffer to be
- * of exactly half the length of the given hex string to ensure that it exactly
- * fits the converted data.
+ * CELLULAR_AT_BAD_PARAMETER if it is not. It also requires the output buffer to
+ * be of exactly half the length of the given hex string to ensure that it
+ * exactly fits the converted data.
  *
  * It reads two characters and constructs a HEX byte by treating them upper and
  * lower nibble of the byte. For example:
@@ -328,8 +331,7 @@ CellularATError_t Cellular_ATHexStrToHex( const char * pString,
  * @return CELLULAR_AT_SUCCESS if the operation is successful, otherwise an
  * error code indicating the cause of the error.
  */
-CellularATError_t Cellular_ATIsStrDigit( const char * pString,
-                                         bool * pResult );
+CellularATError_t Cellular_ATIsStrDigit( const char * pString, bool * pResult );
 
 /**
  * @brief check if a string as prefix present by determine present of ':'
@@ -345,7 +347,8 @@ CellularATError_t Cellular_ATIsPrefixPresent( const char * pString,
                                               bool * pResult );
 
 /**
- * @brief duplicate string from pSrc to ppDst, malloc is use to allocate mem space for ppDst
+ * @brief duplicate string from pSrc to ppDst, malloc is use to allocate mem
+ * space for ppDst
  *
  * @param[in] pSrc: input string to be copied
  * @param[out] ppDst: destination pointer
@@ -353,8 +356,7 @@ CellularATError_t Cellular_ATIsPrefixPresent( const char * pString,
  * @return CELLULAR_AT_SUCCESS if the operation is successful, otherwise an
  * error code indicating the cause of the error.
  */
-CellularATError_t Cellular_ATStrDup( char ** ppDst,
-                                     const char * pSrc );
+CellularATError_t Cellular_ATStrDup( char ** ppDst, const char * pSrc );
 
 /**
  * @brief check if a string starts with certain prefix
@@ -376,15 +378,17 @@ CellularATError_t Cellular_ATStrStartWith( const char * pString,
  * @param[in] pInputBuf: the haystack buffer
  * @param[in] ppKeyList: list of keys
  * @param[in] keyListLen: size of the keyList array
- * @param[out] pResult: return true if any of Keys in ppKeyList is found in  is at start of pString, else false
+ * @param[out] pResult: return true if any of Keys in ppKeyList is found in  is
+ * at start of pString, else false
  *  *
  * @return CELLULAR_AT_SUCCESS if the operation is successful, otherwise an
  * error code indicating the cause of the error.
  */
-CellularATError_t Cellular_ATcheckErrorCode( const char * pInputBuf,
-                                             const char * const * const ppKeyList,
-                                             size_t keyListLen,
-                                             bool * pResult );
+CellularATError_t Cellular_ATcheckErrorCode(
+    const char * pInputBuf,
+    const char * const * const ppKeyList,
+    size_t keyListLen,
+    bool * pResult );
 
 /**
  * @brief Convert string to int32_t.
@@ -403,7 +407,7 @@ CellularATError_t Cellular_ATStrtoi( const char * pStr,
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus
-    }
+}
 #endif
 /* *INDENT-ON* */
 
