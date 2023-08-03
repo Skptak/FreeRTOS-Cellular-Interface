@@ -1,7 +1,5 @@
-{ "expected-missing-functions":
-  [
-
-  ],
+{
+  "expected-missing-functions": [],
   "proof-name": "Cellular_CommonGetIPAddress",
   "proof-root": "tools/cbmc/proofs"
 }

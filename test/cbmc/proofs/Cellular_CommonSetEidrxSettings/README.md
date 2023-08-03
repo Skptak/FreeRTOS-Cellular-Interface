@@ -1,10 +1,11 @@
-Cellular_CommonSetEidrxSettings proof
-==============
+# Cellular_CommonSetEidrxSettings proof
 
-This directory contains a memory safety proof for Cellular_CommonSetEidrxSettings.
+This directory contains a memory safety proof for
+Cellular_CommonSetEidrxSettings.
 
 To run the proof.
-* Add cbmc, goto-cc, goto-instrument, goto-analyzer, and cbmc-viewer
-  to your path.
-* Run "make".
-* Open html/index.html in a web browser.
+
+- Add cbmc, goto-cc, goto-instrument, goto-analyzer, and cbmc-viewer to your
+  path.
+- Run "make".
+- Open html/index.html in a web browser.

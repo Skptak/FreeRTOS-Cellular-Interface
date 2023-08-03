@@ -1,10 +1,11 @@
-Cellular_CommonRegisterUrcGenericCallback proof
-==============
+# Cellular_CommonRegisterUrcGenericCallback proof
 
-This directory contains a memory safety proof for Cellular_CommonRegisterUrcGenericCallback.
+This directory contains a memory safety proof for
+Cellular_CommonRegisterUrcGenericCallback.
 
 To run the proof.
-* Add cbmc, goto-cc, goto-instrument, goto-analyzer, and cbmc-viewer
-  to your path.
-* Run "make".
-* Open html/index.html in a web browser.
+
+- Add cbmc, goto-cc, goto-instrument, goto-analyzer, and cbmc-viewer to your
+  path.
+- Run "make".
+- Open html/index.html in a web browser.
