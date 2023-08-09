@@ -100,6 +100,6 @@ The FreeRTOS Cellular Interface library provides an implementation of the
 standard AT commands for the
 [3GPP TS v27.007](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=1515)
 and support for the 3 cellular modems
-[Quectel BG96](https://www.quectel.com/product/lpwa-bg96-cat-m1-nb1-egprs),
+[Quectel BG96](https://devices.amazonaws.com/detail/a3G0h0000077rK6EAI/LTE-BG96-Cat-M1-NB1-EGPRS-Module),
 [Sierra Wireless HL7802](https://www.sierrawireless.com/iot-modules/lpwa-modules/hl7802/)
 and [U-Blox Sara-R4](https://www.u-blox.com/en/product/sara-r4-series).
