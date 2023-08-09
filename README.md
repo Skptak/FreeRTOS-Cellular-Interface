@@ -4,13 +4,13 @@
 
 - [Introduction](#Introduction)
 - [Getting Started](#Getting-Started)
-  - [Download the source code](#Download-the-source-code)
+  - [Download the Source Code](#Download-the-Source-Code)
   - [Folder Structure](#Folder-Structure)
-- [Integrate FreeRTOS Cellular Interface with MCU platforms](#Integrate-FreeRTOS-Cellular-Interface-with-MCU-platforms)
-- [Adding support for new cellular modems](#Adding-support-for-new-cellular-modems)
-- [Integrate FreeRTOS Cellular Interface with Cellular Modules](#integrate-freertos-cellular-interface-with-cellular-modules)
+- [Implement Comm Interface with MCU Platforms](#Implement-Comm-Interface-with-MCU-Platforms)
+- [Adding Support for New Cellular Modems](#Adding-Support-for-New-Cellular-Modems)
+- [Integrate FreeRTOS Cellular Interface with Application](#Integrate-FreeRTOS-Cellular-Interface-with-Application)
 - [Building Unit Tests](#Building-Unit-Tests)
-- [Generating documentation](#Generating-documentation)
+- [Generating Documentation](#Generating-Documentation)
 - [Contributing](#Contributing)
 
 ## Introduction
@@ -38,7 +38,7 @@ written in compliance of the following code quality criteria:
   documented in source code comments marked by "`coverity`".
 
 **FreeRTOS Cellular Interface v1.3.0
-[source code](https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/tree/v1.3.0/source)
+[Source Code](https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface/tree/v1.3.0/source)
 is part of the
 [FreeRTOS 202210.00 LTS](https://github.com/FreeRTOS/FreeRTOS-LTS/tree/202210.00-LTS)
 release.**
@@ -81,15 +81,15 @@ such as SPI as well. The documentation of the Comm Interface is found within the
 [Cellular API References](https://www.freertos.org/Documentation/api-ref/cellular/cellular_porting.html#cellular_porting_comm_if).
 These are example implementations of the Comm Interface:
 
-- [FreeRTOS windows simulator comm interface](https://github.com/FreeRTOS/FreeRTOS/blob/main/FreeRTOS-Plus/Demo/FreeRTOS_Cellular_Interface_Windows_Simulator/Common/comm_if_windows.c)
-- [FreeRTOS Common IO UART comm interface](https://github.com/aws/amazon-freertos/blob/feature/cellular/vendors/st/boards/stm32l475_discovery/ports/comm_if/comm_if_uart.c)
-- [STM32 L475 discovery board comm interface](https://github.com/aws/amazon-freertos/blob/feature/cellular/vendors/st/boards/stm32l475_discovery/ports/comm_if/comm_if_st.c)
-- [Sierra Sensor Hub board comm interface](https://github.com/aws/amazon-freertos/blob/feature/cellular/vendors/sierra/boards/sensorhub/ports/comm_if/comm_if_sierra.c)
+- [FreeRTOS Windows Simulator Comm Interface](https://github.com/FreeRTOS/FreeRTOS/blob/main/FreeRTOS-Plus/Demo/FreeRTOS_Cellular_Interface_Windows_Simulator/Common/comm_if_windows.c)
+- [FreeRTOS Common IO UART Comm Interface](https://github.com/aws/amazon-freertos/blob/feature/cellular/vendors/st/boards/stm32l475_discovery/ports/comm_if/comm_if_uart.c)
+- [STM32 L475 Discovery Board Comm Interface](https://github.com/aws/amazon-freertos/blob/feature/cellular/vendors/st/boards/stm32l475_discovery/ports/comm_if/comm_if_st.c)
+- [Sierra Sensor Hub Board Comm Interface](https://github.com/aws/amazon-freertos/blob/feature/cellular/vendors/sierra/boards/sensorhub/ports/comm_if/comm_if_sierra.c)
 
 The FreeRTOS Cellular Interface uses kernel APIs for task synchronization and
 memory management.
 
-## Adding support for new cellular modems
+## Adding Support for New Cellular Modems
 
 FreeRTOS Cellular Interface now supports AT commands, TCP offloaded Cellular
 abstraction Layer. In order to add support for a new cellular modem, the
@@ -113,7 +113,7 @@ In order to port the
    [this table](https://www.freertos.org/Documentation/api-ref/cellular/cellular_common__u_r_c_handlers.html).
 
 The
-[Cellular common APIs document](https://www.freertos.org/Documentation/api-ref/cellular/cellular_porting_module_guide.html)
+[Cellular Common APIs document](https://www.freertos.org/Documentation/api-ref/cellular/cellular_porting_module_guide.html)
 provides detail information required in each steps. It is recommended that you
 start by cloning the implementation of one of the existing modems, then make
 modifications where your modem's vendor-specific (non-3GPP) AT commands are
@@ -125,7 +125,7 @@ Current Example Implementations:
 - [Sierra Wireless HL7802](https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface-Reference-Sierra-Wireless-HL7802)
 - [U-Blox Sara-R4](https://github.com/FreeRTOS/FreeRTOS-Cellular-Interface-Reference-ublox-SARA-R4)
 
-## Integrate FreeRTOS Cellular Interface with application
+## Integrate FreeRTOS Cellular Interface with Application
 
 Once comm interface and cellular module implementation are ready, we can start
 to integrate FreeRTOS Cellular Interface. The following diagram depicts the
@@ -142,7 +142,7 @@ Follow these steps to integrate FreeRTOS Cellular Interface into your project:
 4. Build these software components with your application and execute.
 
 We also provide
-[Demos for FreeRTOS-Cellular-Interface on Windows simulator](https://github.com/FreeRTOS/FreeRTOS/tree/main/FreeRTOS-Plus/Demo/FreeRTOS_Cellular_Interface_Windows_Simulator)
+[Demos for FreeRTOS-Cellular-Interface on Windows Simulator](https://github.com/FreeRTOS/FreeRTOS/tree/main/FreeRTOS-Plus/Demo/FreeRTOS_Cellular_Interface_Windows_Simulator)
 as references for these three cellular modems example implementations.
 
 ## Building Unit Tests
@@ -152,7 +152,7 @@ as references for these three cellular modems example implementations.
 By default, the submodules in this repository are configured with `update=none`
 in [.gitmodules](.gitmodules) to avoid increasing clone time and disk space
 usage of other repositories (like
-[amazon-freertos](https://github.com/aws/amazon-freertos) that submodules this
+[FreeRTOS](https://github.com/FreeRTOS/FreeRTOS) that submodules this
 repository).
 
 To build unit tests, the submodule dependency of CMock is required. Use the
