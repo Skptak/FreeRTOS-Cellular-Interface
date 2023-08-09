@@ -1211,32 +1211,26 @@ static void _handleAllReceived( CellularContext_t * pContext,
          * the input buffer before pktio processing lines in the buffer. For
          * example, porting can make use of input buffer callback to handle
          * binary stream in URC. */
-        keepProcess = _preprocessInputBuffer( pContext,
-                                              &pTempLine,
-                                              &bytesRead );
+        /* clang-format off */
+        keepProcess = _preprocessInputBuffer( pContext, &pTempLine, &bytesRead );
 
         /* Preprocess line. */
         if( keepProcess == true )
         {
-            keepProcess = _preprocessLine( pContext,
-                                           pTempLine,
-                                           &bytesRead,
-                                           &pStartOfData );
+            keepProcess = _preprocessLine( pContext, pTempLine,
+                                            &bytesRead, &pStartOfData );
         }
 
         if( keepProcess == true )
         {
-            keepProcess = _findLineInStream( pContext,
-                                             pTempLine,
-                                             bytesRead,
-                                             &currentLineLength );
+            keepProcess = _findLineInStream( pContext, pTempLine,
+                                                bytesRead, &currentLineLength );
         }
 
         if( keepProcess == true )
         {
             /* A complete Line received. Get the message type. */
-            pContext->recvdMsgType = _getMsgType( pContext,
-                                                  pTempLine,
+            pContext->recvdMsgType = _getMsgType( pContext, pTempLine,
                                                   pContext->pRespPrefix );
 
             /* Handle the message according the received message type. */
@@ -1248,30 +1242,22 @@ static void _handleAllReceived( CellularContext_t * pContext,
                  * buffer. */
                 if( pContext->dataLength != 0U )
                 {
-                    keepProcess = _handleDataResult( pContext,
-                                                     ppAtResp,
-                                                     pStartOfData,
-                                                     &pTempLine,
+                    keepProcess = _handleDataResult( pContext, ppAtResp,
+                                                     pStartOfData, &pTempLine,
                                                      &bytesRead );
                 }
                 else
                 {
-                    keepProcess = _getNextLine( pContext,
-                                                &pTempLine,
-                                                &bytesRead,
-                                                currentLineLength,
-                                                pktStatus );
+                    keepProcess = _getNextLine( pContext, &pTempLine, &bytesRead,
+                                                currentLineLength, pktStatus );
                 }
             }
             else if( ( pktStatus == CELLULAR_PKT_STATUS_OK ) ||
                      ( pktStatus == CELLULAR_PKT_STATUS_PENDING_DATA ) )
             {
                 /* Process AT reponse success. Get the next Line. */
-                keepProcess = _getNextLine( pContext,
-                                            &pTempLine,
-                                            &bytesRead,
-                                            currentLineLength,
-                                            pktStatus );
+                keepProcess = _getNextLine( pContext, &pTempLine, &bytesRead,
+                                            currentLineLength, pktStatus );
             }
             else
             {
@@ -1279,6 +1265,7 @@ static void _handleAllReceived( CellularContext_t * pContext,
                 keepProcess = false;
             }
         }
+        /* clang-format on */
     }
 }
 
