@@ -33,6 +33,8 @@
 #ifndef __CELLULAR_TYPES_H__
 #define __CELLULAR_TYPES_H__
 
+#include "cellular_config_defaults.h"
+
 /* *INDENT-OFF* */
 #ifdef __cplusplus
 extern "C" {
